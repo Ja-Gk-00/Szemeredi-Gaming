@@ -5,7 +5,7 @@ import math
 from utils import find_all_arithmetic_progressions
 
 class MCTSNode:
-    def __init__(self, available: List[int], current: List[int], opponent: List[int], is_player_turn: bool, k: int, availble_aps: Optional[List[set[int]]] = None):
+    def __init__(self, available: List[int], current: List[int], opponent: List[int], is_player_turn: bool, k: int, available_aps: Optional[List[set[int]]] = None):
         self.available = available
         self.current = current
         self.opponent = opponent
