@@ -2,9 +2,10 @@ from typing import List, Optional
 import random
 import math
 
+from utils import find_all_arithmetic_progressions
 
 class MCTSNode:
-    def __init__(self, available: List[int], current: List[int], opponent: List[int], is_player_turn: bool, k: int):
+    def __init__(self, available: List[int], current: List[int], opponent: List[int], is_player_turn: bool, k: int, available_aps: Optional[List[set[int]]] = None):
         self.available = available
         self.current = current
         self.opponent = opponent
@@ -16,6 +17,9 @@ class MCTSNode:
         self.untried_moves = available[:]
         self.parent: Optional[MCTSNode] = None
         self.move = None  # The move that led to this node
+        if availble_aps is None:
+            availble_aps = [set(ap) for ap in find_all_arithmetic_progressions(k, list({n for n in available + current + opponent}))]
+        self.availble_aps = availble_aps
 
     def expand(self):
         move = self.untried_moves.pop()
@@ -34,7 +38,8 @@ class MCTSNode:
             next_current if self.is_player_turn else self.current,
             next_opponent if not self.is_player_turn else self.opponent,
             not self.is_player_turn,
-            self.k
+            self.k,
+            self.availble_aps
         )
         child.parent = self
         child.move = move
@@ -55,21 +60,7 @@ class MCTSNode:
 
     def has_ap(self, seq: List[int], k: int) -> bool:
         s = set(seq)
-        n = len(s)
-        if n < k:
-            return False
-        sorted_seq = sorted(s)
-        for i in range(n):
-            for j in range(i + 1, n):
-                d = sorted_seq[j] - sorted_seq[i]
-                count = 2
-                next_val = sorted_seq[j] + d
-                while next_val in s:
-                    count += 1
-                    if count == k:
-                        return True
-                    next_val += d
-        return False
+        return any(ap.issubset(s) for ap in self.availble_aps)
 
     def rollout(self):
         current = self.current[:]
