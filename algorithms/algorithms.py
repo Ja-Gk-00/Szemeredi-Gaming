@@ -147,5 +147,4 @@ def choose_move(available_moves: List[int], current_held: List[int], opponent_he
 
     # Choose the move with the most visits
     best_child = max(root.children, key=lambda c: c.visits)
-    prev_root = best_child
     return best_child.move
