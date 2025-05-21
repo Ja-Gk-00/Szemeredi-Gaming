@@ -5,18 +5,30 @@ import statistics
 from itertools import combinations
 from algorithms.MCTSNode import MCTSNode
 
+
 @register_algorithm("random")
-def choose_move(available_moves: List[int], current_held: List[int], opponent_held: List[int], k: int) -> int:
+def choose_move(
+    available_moves: List[int],
+    current_held: List[int],
+    opponent_held: List[int],
+    k: int,
+) -> int:
     if not available_moves:
         return -1
     return random.choice(available_moves)
 
+
 @register_algorithm("heuristic")
-def choose_move(available_moves: List[int], current_held: List[int], opponent_held: List[int], k: int) -> int:
+def choose_move(
+    available_moves: List[int],
+    current_held: List[int],
+    opponent_held: List[int],
+    k: int,
+) -> int:
     if not available_moves:
         return -1
     median_val: float = statistics.median(available_moves)
-    best_score: float = -float('inf')
+    best_score: float = -float("inf")
     best_move: int = available_moves[0]
     for num in available_moves:
         score: float = -abs(num - median_val)
@@ -27,15 +39,27 @@ def choose_move(available_moves: List[int], current_held: List[int], opponent_he
             best_move = num
     return best_move
 
+
 @register_algorithm("min")
-def choose_move(available_moves: List[int], current_held: List[int], opponent_held: List[int], k: int) -> int:
+def choose_move(
+    available_moves: List[int],
+    current_held: List[int],
+    opponent_held: List[int],
+    k: int,
+) -> int:
     if not available_moves:
         return -1
     best_move = min(available_moves)
     return best_move
 
+
 @register_algorithm("heuristic_fast")
-def choose_move(available_moves: List[int], current_held: List[int], opponent_held: List[int], k: int) -> int:
+def choose_move(
+    available_moves: List[int],
+    current_held: List[int],
+    opponent_held: List[int],
+    k: int,
+) -> int:
     if not available_moves:
         return -1
 
@@ -79,7 +103,6 @@ def choose_move(available_moves: List[int], current_held: List[int], opponent_he
     return best_move
 
 
-
 def compare(a: List[int], b: List[int]) -> bool:
     if len(a) != len(b):
         return False
@@ -88,20 +111,30 @@ def compare(a: List[int], b: List[int]) -> bool:
             return False
     return True
 
+
 prev_root = None
+
+
 @register_algorithm("mcts_cached")
-def choose_move(available_moves: List[int], current_held: List[int], opponent_held: List[int], k: int) -> int:
+def choose_move(
+    available_moves: List[int],
+    current_held: List[int],
+    opponent_held: List[int],
+    k: int,
+) -> int:
     root = None
     global prev_root
     if prev_root is not None:
         for child in prev_root.children:
-            if compare(child.current, current_held) and compare(child.opponent, opponent_held):
+            if compare(child.current, current_held) and compare(
+                child.opponent, opponent_held
+            ):
                 root = child
                 root.parent = None
                 break
     if not root:
         root = MCTSNode(available_moves, current_held, opponent_held, True, k)
-        
+
     for _ in range(1000):  # number of simulations
         node = root
 
@@ -124,10 +157,16 @@ def choose_move(available_moves: List[int], current_held: List[int], opponent_he
     prev_root = best_child
     return best_child.move
 
+
 @register_algorithm("mcts")
-def choose_move(available_moves: List[int], current_held: List[int], opponent_held: List[int], k: int) -> int:
+def choose_move(
+    available_moves: List[int],
+    current_held: List[int],
+    opponent_held: List[int],
+    k: int,
+) -> int:
     root = MCTSNode(available_moves, current_held, opponent_held, True, k)
-        
+
     for _ in range(1000):  # number of simulations
         node = root
 

@@ -1,0 +1,8 @@
+{
+  "k": 5,
+  "x": 25,
+  "lower": 1,
+  "bound": 50,
+  "num_games": 1,
+  "save_moves": true
+}

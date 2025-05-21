@@ -1,5 +1,6 @@
 import random
 
+
 def has_arithmetic_progression(k: int, numbers: list[int]) -> bool:
     if k <= 1:
         return True
@@ -17,6 +18,7 @@ def has_arithmetic_progression(k: int, numbers: list[int]) -> bool:
                     return True
                 next_val += d
     return False
+
 
 def find_winning_progression(k: int, numbers: list[int]) -> list[int]:
     s = set(numbers)
@@ -36,6 +38,7 @@ def find_winning_progression(k: int, numbers: list[int]) -> list[int]:
                 return prog
     return []
 
+
 def find_all_arithmetic_progressions(k: int, numbers: list[int]) -> list[list[int]]:
     s = set(numbers)
     sorted_nums = sorted(s)
@@ -54,6 +57,7 @@ def find_all_arithmetic_progressions(k: int, numbers: list[int]) -> list[list[in
             if len(prog) == k:
                 progs.append(prog)
     return sorted(progs)
+
 
 def generate_random_subset_with_progression(k, subset_size, lower, bound):
     if subset_size < k or subset_size > (bound - lower + 1):
