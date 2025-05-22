@@ -163,8 +163,7 @@ cython_debug/
 .pypirc
 
 # Saved files
-saved_games/
-saved_runs_moves/
+
 
 
 # __pycache__ dirs

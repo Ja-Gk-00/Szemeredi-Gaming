@@ -1,0 +1,309 @@
+{
+  "wins": {
+    "random": 9,
+    "heuristic": 24,
+    "min": 22,
+    "heuristic_fast": 56,
+    "overlap_max": 79,
+    "mcts_cached": 74,
+    "mcts": 72
+  },
+  "losses": {
+    "heuristic": 90,
+    "random": 105,
+    "min": 94,
+    "heuristic_fast": 28,
+    "mcts": 9,
+    "mcts_cached": 9,
+    "overlap_max": 1
+  },
+  "draws": {
+    "random": 6,
+    "heuristic": 6,
+    "min": 4,
+    "heuristic_fast": 36,
+    "overlap_max": 40,
+    "mcts_cached": 37,
+    "mcts": 39
+  },
+  "points": {
+    "random": 12.0,
+    "heuristic": 27.0,
+    "min": 24.0,
+    "heuristic_fast": 74.0,
+    "overlap_max": 99.0,
+    "mcts_cached": 92.5,
+    "mcts": 91.5
+  },
+  "execution_time": {
+    "random": 0.0,
+    "heuristic": 0.00700068473815918,
+    "min": 0.0,
+    "heuristic_fast": 0.71799635887146,
+    "overlap_max": 0.1226651668548584,
+    "mcts_cached": 32.730244636535645,
+    "mcts": 31.971957683563232
+  },
+  "matchups": {
+    "random": {
+      "random": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic": {
+        "wins": 5,
+        "losses": 0,
+        "draws": 1
+      },
+      "min": {
+        "wins": 4,
+        "losses": 0,
+        "draws": 2
+      },
+      "heuristic_fast": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "overlap_max": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts_cached": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    "heuristic": {
+      "random": {
+        "wins": 13,
+        "losses": 0,
+        "draws": 1
+      },
+      "heuristic": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "min": {
+        "wins": 11,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic_fast": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 1
+      },
+      "overlap_max": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts_cached": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    "min": {
+      "random": {
+        "wins": 13,
+        "losses": 0,
+        "draws": 1
+      },
+      "heuristic": {
+        "wins": 9,
+        "losses": 0,
+        "draws": 0
+      },
+      "min": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic_fast": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "overlap_max": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts_cached": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    "heuristic_fast": {
+      "random": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic": {
+        "wins": 16,
+        "losses": 0,
+        "draws": 3
+      },
+      "min": {
+        "wins": 19,
+        "losses": 0,
+        "draws": 1
+      },
+      "heuristic_fast": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "overlap_max": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 7
+      },
+      "mcts_cached": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 5
+      },
+      "mcts": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 7
+      }
+    },
+    "overlap_max": {
+      "random": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "min": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic_fast": {
+        "wins": 10,
+        "losses": 0,
+        "draws": 3
+      },
+      "overlap_max": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts_cached": {
+        "wins": 5,
+        "losses": 0,
+        "draws": 7
+      },
+      "mcts": {
+        "wins": 4,
+        "losses": 0,
+        "draws": 6
+      }
+    },
+    "mcts_cached": {
+      "random": {
+        "wins": 19,
+        "losses": 0,
+        "draws": 1
+      },
+      "heuristic": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "min": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic_fast": {
+        "wins": 11,
+        "losses": 0,
+        "draws": 4
+      },
+      "overlap_max": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 8
+      },
+      "mcts_cached": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      },
+      "mcts": {
+        "wins": 4,
+        "losses": 0,
+        "draws": 7
+      }
+    },
+    "mcts": {
+      "random": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "min": {
+        "wins": 20,
+        "losses": 0,
+        "draws": 0
+      },
+      "heuristic_fast": {
+        "wins": 7,
+        "losses": 0,
+        "draws": 5
+      },
+      "overlap_max": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 9
+      },
+      "mcts_cached": {
+        "wins": 4,
+        "losses": 0,
+        "draws": 5
+      },
+      "mcts": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0
+      }
+    }
+  },
+  "total_games": 420
+}
