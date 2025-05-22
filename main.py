@@ -38,6 +38,8 @@ def settings_screen() -> dict:
     }
 
     # — Experiments config dropdown & button —
+    if not os.path.exists(CONFIG_DIR):
+        os.makedirs(CONFIG_DIR)
     configs = [f for f in os.listdir(CONFIG_DIR) if f.endswith(".json")]
     run_exp_button = pygame.Rect(550, 300, 200, 50)
     config_box = {
@@ -49,6 +51,8 @@ def settings_screen() -> dict:
     }
 
     # — Simulation dropdown & Play Simulation button —
+    if not os.path.exists(MOVES_DIR):
+        os.makedirs(MOVES_DIR)
     sims = [f for f in os.listdir(MOVES_DIR) if f.endswith(".json")]
     sim_box = {
         "rect": pygame.Rect(550, run_exp_button.y - 140, 200, 32),
