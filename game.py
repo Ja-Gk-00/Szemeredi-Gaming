@@ -1,8 +1,6 @@
 import pygame, sys, math
 from typing import List, Dict, Any, Set, Optional
 from utils import (
-    has_arithmetic_progression,
-    find_winning_progression,
     find_all_arithmetic_progressions,
     generate_random_subset_with_progression,
 )

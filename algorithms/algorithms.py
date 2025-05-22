@@ -3,6 +3,7 @@ from . import register_algorithm
 import random
 import statistics
 from itertools import combinations
+from utils import find_all_arithmetic_progressions
 from algorithms.MCTSNode import MCTSNode
 
 
@@ -101,6 +102,66 @@ def choose_move(
             best_move = move
 
     return best_move
+
+
+@register_algorithm("overlap_max")
+def choose_move(
+    available: list[int],
+    own_moves: list[int],
+    opp_moves: list[int],
+    k: int
+) -> int:
+    # Build the universe of numbers and all length‐k APs
+    universe = sorted(set(available) | set(own_moves) | set(opp_moves))
+    all_aps = [set(ap) for ap in find_all_arithmetic_progressions(k, universe)]
+
+    # Filter to APs still possible for each side
+    possible_self = [ap for ap in all_aps if not (ap & set(opp_moves))]
+    possible_opp  = [ap for ap in all_aps if not (ap & set(own_moves))]
+
+    # If truly no one can win, just play random
+    if not possible_self and not possible_opp:
+        return random.choice(available)
+
+    # Helper: find (max_overlap, list_of_APs) for a given set of APs & moves
+    def best_aps(aps: list[set[int]], moves: list[int]) -> tuple[int, list[set[int]]]:
+        overlaps = [(len(ap & set(moves)), ap) for ap in aps]
+        max_ov = max((ov for ov, _ in overlaps), default=0)
+        best = [ap for ov, ap in overlaps if ov == max_ov]
+        return max_ov, best
+
+    self_ov, self_best = best_aps(possible_self, own_moves)
+    opp_ov,  opp_best  = best_aps(possible_opp, opp_moves)
+
+    # Offense if we're at least as close as they are
+    if self_ov >= opp_ov and self_best:
+        # Count frequency of each candidate number in our best APs
+        freq: dict[int,int] = {}
+        for ap in self_best:
+            for num in ap:
+                if num in available:
+                    freq[num] = freq.get(num, 0) + 1
+        if freq:
+            maxf = max(freq.values())
+            choices = [n for n,f in freq.items() if f == maxf]
+            return random.choice(choices)
+
+    # Defense otherwise
+    if opp_best:
+        freq = {}
+        for ap in opp_best:
+            for num in ap:
+                if num in available:
+                    freq[num] = freq.get(num, 0) + 1
+        if freq:
+            maxf = max(freq.values())
+            choices = [n for n,f in freq.items() if f == maxf]
+            return random.choice(choices)
+
+    # Only if only draw condition
+    return random.choice(available)
+
+
 
 
 def compare(a: List[int], b: List[int]) -> bool:

@@ -6,8 +6,7 @@ import json
 import argparse
 import pygame
 import math
-from game import Game  # Game.__init__(self, k, x, lower, bound)
-from utils import find_all_arithmetic_progressions
+from game import Game
 
 # Colors (should match your game.py constants)
 BLACK = (0, 0, 0)
